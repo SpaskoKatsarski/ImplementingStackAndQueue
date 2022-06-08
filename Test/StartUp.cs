@@ -8,19 +8,22 @@ namespace StartUp
     {
         static void Main(string[] args)
         {
-            List<int> list2 = new List<int>();
+            //List<int> list2 = new List<int>();
 
-            list2.Add(2);
-            list2.Add(1);
-            list2.Add(2);
-            list2.Add(2);
+            //list2.Add(2);
+            //list2.Add(1);
+            //list2.Add(2);
+            //list2.Add(2);
 
-            int number2 = list2.Find(n => n == 1);
-            Console.WriteLine(number2);
+            //int number2 = list2.Find(n => n == 1);
+            //Console.WriteLine(number2);
 
             //List<int> numberList = list2.FindAll(n => n == 1);
             //Console.WriteLine(numberList);
 
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(">>>>>>>>>>>>>>>>MY LIST<<<<<<<<<<<<<<<");
+            Console.WriteLine("---------------------------------------");
 
             var list = new MyList();
 
@@ -50,6 +53,44 @@ namespace StartUp
             Console.WriteLine(list.Find(n => n == 231));
             Console.WriteLine(list.Find(n => n == 4));
             Console.WriteLine(list.Find(n => n % 2 == 0));
+
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(">>>>>>>>>>>>>>>>MY STACK<<<<<<<<<<<<<<<");
+            Console.WriteLine("---------------------------------------");
+
+            MyStack stack = new MyStack();
+            stack.Push(2);
+            stack.Push(34);
+            stack.Push(6);
+            stack.Push(3);
+            stack.Push(1);
+            Console.WriteLine(stack.GetPapacity());
+            stack.Pop();
+            Console.WriteLine("Peek after Pop -> ");
+            Console.WriteLine(stack.Peek());
+
+            Console.WriteLine();
+            Console.WriteLine("ForEach method:");
+            stack.ForEach(x => Console.WriteLine(x));
+            stack.ForEach(x => x++); //Doesn't work in the internal array, because we just get the elements and don't change them in it.
+            stack.ForEach(x => Console.WriteLine(x)); //Stays the same.
+
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(">>>>>>>>>>>>>>>>MY QUEUE<<<<<<<<<<<<<<<");
+            Console.WriteLine("---------------------------------------");
+
+            MyQueue myQueue = new MyQueue();
+            myQueue.Enqueue(1);
+            myQueue.Enqueue(2);
+            myQueue.Enqueue(3);
+            myQueue.Enqueue(4);
+            myQueue.Enqueue(5);
+
+            Console.WriteLine(myQueue.Dequeue());
+            Console.WriteLine(myQueue.Peek());
+
+            Console.WriteLine("ForEach:");
+            myQueue.ForEach(x => Console.WriteLine(x));
         }
     }
 }
