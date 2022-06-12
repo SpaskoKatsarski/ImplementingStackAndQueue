@@ -25,7 +25,7 @@ namespace StartUp
             Console.WriteLine(">>>>>>>>>>>>>>>>MY LIST<<<<<<<<<<<<<<<");
             Console.WriteLine("---------------------------------------");
 
-            var list = new MyList();
+            var list = new MyList<int>();
 
             list.Add(4);
             list.Add(2);
@@ -38,8 +38,8 @@ namespace StartUp
             Console.WriteLine(list[1]);
             Console.WriteLine(list[2]);
 
-            Console.WriteLine($"Contains 4: {list.Contains(4)}");
-            Console.WriteLine($"Contains 98: {list.Contains(98)}");
+            //Console.WriteLine($"Contains 4: {list.Contains(4)}");
+            //Console.WriteLine($"Contains 98: {list.Contains(98)}");
 
             Console.WriteLine("Before swap:");
             Console.WriteLine(list[0]);
@@ -53,6 +53,22 @@ namespace StartUp
             Console.WriteLine(list.Find(n => n == 231));
             Console.WriteLine(list.Find(n => n == 4));
             Console.WriteLine(list.Find(n => n % 2 == 0));
+
+
+            Console.WriteLine("<<<<<<<<<<<<<<<<<<<STRING LIST>>>>>>>>>>>>>>>>>");
+            MyList<string> myList = new MyList<string>();
+            myList.Add("Ivan");
+            myList.Add("Spasko");
+            myList.Add("Alex");
+            myList.Add("Dimitrichko");
+
+            myList.Insert(2, "<<INSERTED>>");
+            Console.WriteLine(myList[2]);
+            Console.WriteLine(myList.RemoveAt(2));
+            Console.WriteLine(myList.Count);
+            //myList.Swap(-1, 2);
+            Console.WriteLine(myList.Find(x => x[0] == 'A'));
+            Console.WriteLine(myList);
 
             Console.WriteLine("---------------------------------------");
             Console.WriteLine(">>>>>>>>>>>>>>>>MY STACK<<<<<<<<<<<<<<<");

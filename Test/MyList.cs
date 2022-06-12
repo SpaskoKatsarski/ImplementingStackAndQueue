@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace StartUp
 {
-    public class MyList
+    public class MyList<T>
     {
         private const int InitialCapacity = 2;
 
-        private int[] items;
+        private T[] items;
 
         public MyList()
         {
-            items = new int[InitialCapacity];
+            items = new T[InitialCapacity];
         }
 
         public int Count { get; private set; }
 
-        public int this[int index]
+        public T this[int index]
         {
             get
             {
@@ -38,7 +38,7 @@ namespace StartUp
         }
 
         //Public methods:
-        public void Add(int item)
+        public void Add(T item)
         {
             if (this.Count == this.items.Length)
             {
@@ -50,15 +50,15 @@ namespace StartUp
             this.Count++;
         }
 
-        public int RemoveAt(int index)
+        public T RemoveAt(int index)
         {
             if (!IsIndexValid(index))
             {
                 throw new ArgumentOutOfRangeException();
             }
 
-            int removedItem = this.items[index];
-            this.items[index] = (int)default;
+            T removedItem = this.items[index];
+            this.items[index] = default;
 
             this.Shift(index);
             this.Count--;
@@ -71,7 +71,7 @@ namespace StartUp
             return removedItem;
         }
 
-        public void Insert(int index, int value)
+        public void Insert(int index, T value)
         {
             if (!IsIndexValid(index))
             {
@@ -88,18 +88,18 @@ namespace StartUp
             this.items[index] = value;
         }
 
-        public bool Contains(int element)
-        {
-            foreach (var item in items)
-            {
-                if (item == element)
-                {
-                    return true;
-                }
-            }
+        //public bool Contains(int element)
+        //{
+        //    foreach (var item in items)
+        //    {
+        //        if (item == element)
+        //        {
+        //            return true;
+        //        }
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         public void Swap(int firstIndex, int secondIndex)
         {
@@ -114,7 +114,7 @@ namespace StartUp
             this.items[secondIndex] = firstElement;
         }
         
-        public int Find(Predicate<int> predicate)
+        public T Find(Predicate<T> predicate)
         {
             for (int i = 0; i < this.Count; i++)
             {
@@ -131,7 +131,7 @@ namespace StartUp
         //Private methods:
         private void Resize()
         {
-            var copy = new int[items.Length * 2];
+            var copy = new T[items.Length * 2];
 
             for (int i = 0; i < items.Length; i++)
             {
@@ -161,7 +161,7 @@ namespace StartUp
 
         private void Shrink(int index)
         {
-            var copy = new int[items.Length / 2];
+            var copy = new T[items.Length / 2];
 
             for (int i = 0; i < this.Count; i++)
             {
@@ -177,6 +177,11 @@ namespace StartUp
             {
                 this.items[i] = this.items[i - 1];
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Join(", ", items.Where(x => x != null));
         }
     }
 }
